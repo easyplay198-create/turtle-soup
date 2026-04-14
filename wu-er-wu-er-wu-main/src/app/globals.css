@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== 全局基础样式 ===== */
+:root {
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* ===== 警灯扫描线动画 ===== */
+@keyframes scan {
+  0% { transform: translateX(-100%); opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-scan {
+  animation: scan 3s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ===== 卡片 hover 强化 ===== */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow:
+    0 0 20px rgba(239, 68, 68, 0.15),
+    0 0 60px rgba(239, 68, 68, 0.05),
+    0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-hover:hover .card-glow {
+  opacity: 1;
+}
+
+.card-glow {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* ===== 聊天气泡样式 ===== */
+.bubble-user {
+  background: linear-gradient(135deg, #1e1e2e, #2a2a3e);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px 20px 4px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.bubble-host {
+  border-radius: 20px 20px 20px 4px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.bubble-yes {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.bubble-close {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.bubble-no {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.bubble-irrelevant {
+  background: linear-gradient(135deg, rgba(100, 100, 120, 0.15), rgba(100, 100, 120, 0.05));
+  border: 1px solid rgba(100, 100, 120, 0.2);
+}
+
+/* ===== 扫描线容器 ===== */
+.scan-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.8), transparent);
+  filter: blur(0.5px);
+}
+
+/* ===== 滚动条美化 ===== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(239, 68, 68, 0.2);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(239, 68, 68, 0.4);
+}
